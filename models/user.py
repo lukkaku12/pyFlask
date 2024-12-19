@@ -7,6 +7,7 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
+    posts = db.relationship('Post', back_populates='user')
 
     def to_dict(self):
         return {"id": self.id, "name": self.name, "email": self.email}
